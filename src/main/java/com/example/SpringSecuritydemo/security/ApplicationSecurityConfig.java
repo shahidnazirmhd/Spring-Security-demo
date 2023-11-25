@@ -3,6 +3,7 @@ package com.example.SpringSecuritydemo.security;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.Customizer;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
@@ -21,11 +22,14 @@ public class ApplicationSecurityConfig {
     @Bean
      public SecurityFilterChain SecurityFilterChain(HttpSecurity http) throws Exception {
         http
-                .csrf(AbstractHttpConfigurer::disable)
+                //.csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests((requests) ->
             requests
+                    .requestMatchers("/", "index", "/css/*", "/js/*","/api/v1/greetings","/api/v1/bye").hasAnyRole("USER", "ADMIN")
+                    .requestMatchers("/api/v1/admin").hasRole("ADMIN")
                     .anyRequest()
                     .authenticated())
+        //.formLogin(Customizer.withDefaults())
         .httpBasic(Customizer.withDefaults());
         return http.build();
     }
