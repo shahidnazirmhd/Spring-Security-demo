@@ -14,7 +14,7 @@ public class GreetingsController {
         return ResponseEntity.ok("Hello! from API ");
     }
 
-    @PreAuthorize("hasRole('ADMIN')")
+
     @GetMapping(path = "admin")
     public ResponseEntity<String> getAdminData() {
         return ResponseEntity.ok("This is Admin Data");
