@@ -29,7 +29,7 @@ public class ApplicationSecurityConfig {
                     .requestMatchers("/api/v1/admin").hasRole("ADMIN")
                     .anyRequest()
                     .authenticated())
-        //.formLogin(Customizer.withDefaults())
+        .formLogin(Customizer.withDefaults())
         .httpBasic(Customizer.withDefaults());
         return http.build();
     }
