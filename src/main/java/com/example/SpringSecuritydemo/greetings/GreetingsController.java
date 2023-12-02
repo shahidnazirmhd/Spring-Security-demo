@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/v1")
 public class GreetingsController {
-    @GetMapping(path = "greetings")
+    @GetMapping(path = "data/greetings")
     public ResponseEntity<String> sayHello() {
         return ResponseEntity.ok("Hello! from API ");
     }
@@ -19,8 +19,8 @@ public class GreetingsController {
         return ResponseEntity.ok("This is Admin Data");
     }
 
-    @GetMapping(path = "bye")
+    @GetMapping(path = "data/info")
     public ResponseEntity<String> sayGoodBye() {
-        return ResponseEntity.ok("Good bye!");
+        return ResponseEntity.ok("This is Spring Security 6 Demo");
     }
 }

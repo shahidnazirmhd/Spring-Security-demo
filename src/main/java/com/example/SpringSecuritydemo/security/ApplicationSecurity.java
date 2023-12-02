@@ -27,7 +27,7 @@ public class ApplicationSecurity {
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests((requests) ->
             requests
-                    .requestMatchers("/", "index", "/css/*", "/js/*","/api/v1/greetings","/api/v1/bye").permitAll()
+                    .requestMatchers("/*","/api/v1/data/**","/api/v1/auth/**").permitAll()
                     .anyRequest()
                     .authenticated())
                 .sessionManagement(session -> session.sessionCreationPolicy(STATELESS))

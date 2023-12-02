@@ -22,8 +22,8 @@ public class User implements UserDetails {
     @Id
     @GeneratedValue
     private Long id;
-    private String fName;
-    private String lName;
+    private String firstname;
+    private String lastname;
     private String email;
     private String password;
     @Enumerated(EnumType.STRING)
